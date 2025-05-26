@@ -1,12 +1,12 @@
 <script>
   let isOpen = false;
-  export let title = "Hacklab";
+  export let title = "Hacklab.blog";
 </script>
 
 <nav class="sticky top-0 z-50 w-full backdrop-blur-md bg-zinc-900/80 border-b border-white/10 shadow-md">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
     <!-- Logo -->
-    <a href="/" class="text-white font-bold text-2xl tracking-tight hover:text-teal-400 transition">
+    <a href="/" class="text-white font-semi bold text-2xl tracking-tight hover:text-teal-400 transition">
       {title}
     </a>
 

@@ -1,6 +1,8 @@
 <script lang="ts">
   import { PortableText } from '@portabletext/svelte';
   import { goto } from '$app/navigation';
+  import Navbar from '$lib/components/Navbar.svelte';
+  import Footer from '$lib/components/Footer.svelte';
 
   export let data: {
     post: {
@@ -15,30 +17,41 @@
   const { post, prev, next } = data;
 </script>
 
-<article class="max-w-4xl mx-auto py-20 px-6 text-white flex flex-col gap-12">
-  <header class="space-y-4">
-    <h1 class="text-4xl font-extrabold tracking-tight leading-tight">{post.title}</h1>
+<Navbar title="Hacklab.dog" />
 
-    {#if post.imageUrl}
+<article class="max-w-4xl mx-auto py-16 px-6 flex flex-col gap-16 text-white">
+  <!-- Imagen -->
+  {#if post.imageUrl}
+    <div class="overflow-hidden rounded-3xl border border-white/10 shadow-xl aspect-[16/9]">
       <img
         src={post.imageUrl}
         alt={post.title}
-        class="w-full rounded-3xl shadow-xl border border-white/10"
+        class="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"
+        loading="lazy"
       />
-    {/if}
-  </header>
+    </div>
+  {/if}
 
-  <section class="prose prose-invert dark:prose-invert prose-zinc prose-lg max-w-none leading-relaxed">
+  <!-- Título -->
+  <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-center">
+    {post.title}
+  </h1>
+
+  <!-- Contenido -->
+  <section
+    class="prose prose-invert prose-zinc prose-lg dark:prose-invert max-w-none leading-relaxed
+    prose-headings:text-white prose-a:text-teal-400 hover:prose-a:text-teal-300
+    prose-strong:text-white prose-blockquote:border-l-teal-500 prose-blockquote:pl-4
+    prose-img:rounded-xl prose-img:shadow-lg prose-pre:bg-zinc-900 prose-code:text-teal-400"
+  >
     <PortableText value={post.body} />
   </section>
 
-  <footer class="mt-16 pt-6 border-t border-white/10">
-    <div class="flex flex-col sm:flex-row justify-between items-center gap-6 text-sm text-zinc-400">
+  <!-- Navegación -->
+  <footer class="pt-12 mt-12 border-t border-white/10">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-zinc-400">
       {#if prev}
-        <button
-          on:click={() => goto(`/posts/${prev.slug}`)}
-          class="hover:text-teal-400 transition"
-        >
+        <button on:click={() => goto(`/posts/${prev.slug}`)} class="hover:text-teal-400 transition">
           ← {prev.title}
         </button>
       {/if}
@@ -51,13 +64,13 @@
       </button>
 
       {#if next}
-        <button
-          on:click={() => goto(`/posts/${next.slug}`)}
-          class="hover:text-teal-400 transition"
-        >
+        <button on:click={() => goto(`/posts/${next.slug}`)} class="hover:text-teal-400 transition">
           {next.title} →
         </button>
       {/if}
     </div>
   </footer>
 </article>
+
+<Footer />
+  

@@ -13,7 +13,7 @@
   />
 
   <section
-    class="grid gap-8 px-4 py-16 max-w-6xl mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+    class="grid gap-2 px-4 pt-16 max-w-6xl mx-auto sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
   >
     {#each data.posts as post}
       <PostCard {post} />

@@ -1,6 +1,11 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Skeleton Theme */
 @import '@skeletonlabs/skeleton';
 @import '@skeletonlabs/skeleton/optional/presets';
-@import '@skeletonlabs/skeleton/themes/nosh';
+@import '@skeletonlabs/skeleton/themes/cerberus';
+
+/* Iconos */
 @import '@fortawesome/fontawesome-free/css/all.min.css';
